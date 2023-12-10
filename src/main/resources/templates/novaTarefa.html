@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Lista de Tarefas</title>
+
+    </head>
+    <body>
+        <nav class="blue darken-4">
+            <div class="container nav-wrapper">
+              <a href="/" class="brand-logo">Lista de Tarefas</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/">Início</a></li>
+              </ul>
+            </div>
+          </nav>
+        <div class="container center-align">
+          <div class="row">
+              <h3 class="center-align">Adicionar nova tarefa</h3>
+            <form action="#" th:action="@{/tarefa}" th:object="${tarefa}" method="POST" class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Titulo" id="titulo" type="text" class="validate" th:field="*{titulo}">
+                  <label for="titulo">Título</label>
+                </div>
+              </div>
+              <div class="row center-align">
+                  <button class="btn waves-effect waves-light" type="submit">Adicionar!
+                    <i class="material-icons right">send</i>
+                  </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+</html>

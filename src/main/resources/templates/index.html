@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Lista de Tarefas</title>
+
+    </head>
+    <body>
+          <nav class="blue darken-4">
+            <div class=" container nav-wrapper">
+              <a href="/" class="brand-logo">Lista de Tarefas</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/">Início</a></li>
+              </ul>
+            </div>
+          </nav>
+        <div class="container center-align">
+            <h3 class="center-align">Tarefas</h3>
+            <table class="highlight responsive-table">
+                <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Título</th>
+                      <th>Status</th>                       
+                      <th>Criado Em</th>
+                      <th>Atualizado Em</th>
+                      <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${tarefas}">
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.titulo}"></td>
+                        <td>
+                            <span th:if="${item.isCompleto} == true" th:text="Completo"/>
+                            <span th:unless="${item.isCompleto} == true" th:text="Incompleto"/>
+                        </td>
+                        <td th:text="${#dates.format(item.criadoEm, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${#dates.format(item.atualizadoEm, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td>
+                            <a class="btn-small waves-effect waves-light light-blue" th:href="@{editar/{id}(id=${item.id})}"><i class="material-icons">create</i>Editar</a>
+                            <a class="btn-small waves-effect waves-light red" th:href="@{deletar/{id}(id=${item.id})}"><i class="material-icons">delete</i>Excluir</a>
+                        </td>
+                    </tr>
+                </tbody>
+                    
+              </table>
+            <br/>
+            <a href="/criarTarefa" class="btn-large waves-effect waves-light red "><i class="material-icons left">add</i>Adicionar Tarefa</a>
+                
+        </div>
+
+
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+</html>
