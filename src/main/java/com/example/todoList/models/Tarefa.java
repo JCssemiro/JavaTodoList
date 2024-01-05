@@ -19,8 +19,12 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 @Entity
 @Table(name="tarefas")
 public class Tarefa implements Serializable{
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+
+
+
     private Long Id;
     
     private String titulo;
@@ -30,6 +34,19 @@ public class Tarefa implements Serializable{
     private Instant criadoEm;
     
     private Instant atualizadoEm;
+
+    public Tarefa(){
+
+    }
+
+    public Tarefa(String titulo){
+        this.titulo = titulo;
+    }
+
+    public Tarefa(Long id, String titulo){
+        this.Id = id;
+        this.titulo = titulo;
+    }
 
     @Override
     public String toString(){
